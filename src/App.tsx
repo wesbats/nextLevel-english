@@ -1,20 +1,28 @@
 import { lazy, Suspense } from "react";
 import {
   Apple,
+  BellRing,
   Bot,
   BrainCircuit,
+  BookOpen,
   CheckCircle2,
   ChevronRight,
   Crown,
+  Flame,
   Gamepad2,
   GraduationCap,
+  Headphones,
+  Home,
+  LockKeyhole,
+  Map,
+  Mic2,
   Play,
+  Route,
   ShieldCheck,
   Sparkles,
-  Star,
   Swords,
   Trophy,
-  Users,
+  UserRound,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -34,6 +42,17 @@ const modes = [
     statLabel: "voltam no dia seguinte",
     icon: GraduationCap,
     accent: "from-warning to-[#FFE066]",
+    preview: {
+      badge: "Mapa Kids",
+      reward: "Pet raro",
+      headline: "Aventura da Floresta",
+      description: "A criança escolhe quests visuais, ganha Stars e libera itens para o avatar.",
+      missions: [
+        ["Pet Park Quest", "5 palavras novas", 82, "Ativa"],
+        ["Sticker Lab", "frases com cores", 64, "Próxima"],
+        ["Story Island", "história guiada", 38, "Bloqueada"],
+      ],
+    },
   },
   {
     value: "teen",
@@ -45,6 +64,17 @@ const modes = [
     statLabel: "mais missões concluídas",
     icon: Swords,
     accent: "from-tertiary to-secondary",
+    preview: {
+      badge: "Arena Teen",
+      reward: "Badge épico",
+      headline: "Liga da Semana",
+      description: "Rankings, clips de cultura pop e desafios PvP para aprender o inglês que eles usam.",
+      missions: [
+        ["PvP Vocabulary", "duelo com amigos", 91, "Ao vivo"],
+        ["Series Clip", "listening rápido", 72, "Ativa"],
+        ["Meme Grammar", "checkpoint leve", 45, "Próxima"],
+      ],
+    },
   },
   {
     value: "adult",
@@ -56,6 +86,17 @@ const modes = [
     statLabel: "para manter o streak",
     icon: ShieldCheck,
     accent: "from-primary to-success",
+    preview: {
+      badge: "Plano Adult",
+      reward: "Sprint de carreira",
+      headline: "Rota Business",
+      description: "Sessões curtas com foco em entrevista, reunião, viagem e vocabulário profissional.",
+      missions: [
+        ["Interview Sprint", "respostas reais", 76, "Ativa"],
+        ["Tech Standup", "fala profissional", 58, "Próxima"],
+        ["Business Email", "escrita guiada", 34, "Revisão"],
+      ],
+    },
   },
 ];
 
@@ -146,7 +187,7 @@ function HeroMockup() {
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-success/15 text-success">
           <Zap className="h-5 w-5" />
         </div>
-        <div className="hero-copy">
+        <div>
           <p className="font-mono text-lg font-bold text-white">+240 XP</p>
           <p className="text-xs font-semibold text-muted">Quest diária concluída</p>
         </div>
@@ -161,55 +202,80 @@ function HeroMockup() {
 
       <div className="phone-shell">
         <div className="phone-screen">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase text-secondary">Speaking Arena</p>
-              <h2 className="mt-1 font-display text-2xl font-extrabold text-white">Daily Quest</h2>
-            </div>
-            <div className="rounded-2xl bg-warning/15 px-3 py-2 text-center">
-              <p className="font-mono text-sm font-bold text-warning">14</p>
-              <p className="text-[10px] font-bold uppercase text-warning/80">streak</p>
-            </div>
+          <div className="notification-strip">
+            <BellRing className="h-4 w-4" />
+            <span>Reajuste de dificuldade aplicado</span>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-white/[0.08] bg-white/[0.06] p-4">
-            <div className="flex items-center gap-3">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary to-secondary">
-                <Bot className="h-6 w-6 text-white" />
-              </div>
+          <div className="journey-status-card">
+            <div className="app-topbar">
               <div>
-                <p className="text-sm font-bold text-white">IA ajustou sua missão</p>
-                <p className="text-xs text-muted">Revisão de since vs. for</p>
+                <p className="text-xs font-bold uppercase text-secondary">Jornada ativa</p>
+                <h2 className="mt-1 font-display text-2xl font-extrabold text-white">Dungeon 08</h2>
+              </div>
+              <div className="streak-pill" aria-label="14 dias de streak">
+                <Flame className="h-4 w-4" />
+                <p className="font-mono text-sm font-bold text-warning">14</p>
               </div>
             </div>
-            <div className="mt-4 h-2 overflow-hidden rounded-full bg-raised">
-              <div className="h-full w-[72%] rounded-full bg-gradient-to-r from-secondary to-primary" />
+
+            <div className="rank-progress">
+              <div>
+                <p className="text-sm font-bold text-white">Rank Explorador</p>
+                <p className="text-xs font-semibold text-muted">420 XP para Guerreiro</p>
+              </div>
+              <Crown className="h-5 w-5 text-warning" />
+            </div>
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-raised">
+              <div className="h-full w-[68%] rounded-full bg-gradient-to-r from-secondary to-primary" />
             </div>
           </div>
 
-          <div className="mt-5 space-y-3">
-            {["I have worked here since 2024.", "She has studied for 2 hours.", "We are ready for the interview."].map(
-              (sentence, index) => (
-                <div
-                  key={sentence}
-                  className="flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-background/72 p-3"
-                >
-                  <span className="grid h-8 w-8 place-items-center rounded-xl bg-success/14 text-success">
-                    <CheckCircle2 className="h-4 w-4" />
+          <div className="adaptive-card">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-primary to-secondary">
+              <Bot className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-white">Missão reajustada</p>
+              <p className="text-xs font-semibold text-muted">Dificuldade adaptada: since vs. for</p>
+            </div>
+          </div>
+
+          <div className="mission-route">
+            {[
+              ["Speaking Arena", "treino de entrevista", Mic2, true],
+              ["Vocabulary Quest", "12 palavras úteis", BookOpen, true],
+              ["Boss Checkpoint", "desbloqueia às 19h", LockKeyhole, false],
+            ].map(([title, detail, Icon, active]) => {
+              const MissionIcon = Icon as typeof Mic2;
+              return (
+                <div key={title as string} className={active ? "mission-node active" : "mission-node"}>
+                  <span className="mission-dot">
+                    <MissionIcon className="h-4 w-4" />
                   </span>
-                  <span className="text-sm font-semibold text-white/90">{sentence}</span>
-                  <span className="ml-auto font-mono text-xs font-bold text-secondary">+{(index + 1) * 20}</span>
+                  <div>
+                    <p>{title as string}</p>
+                    <span>{detail as string}</span>
+                  </div>
                 </div>
-              ),
-            )}
+              );
+            })}
           </div>
 
-          <div className="mt-5 grid grid-cols-3 gap-3">
-            {["VOCAB", "GRAM", "VOICE"].map((item, index) => (
-              <div key={item} className="rounded-2xl bg-white/[0.06] p-3 text-center">
-                <p className="font-mono text-lg font-bold text-white">{[86, 74, 92][index]}%</p>
-                <p className="mt-1 text-[10px] font-bold text-muted">{item}</p>
+          <div className="skill-grid">
+            {["Vocabulário", "Gramática", "Pronúncia"].map((item, index) => (
+              <div key={item} className="skill-tile">
+                <p>{[86, 74, 92][index]}%</p>
+                <span>{item}</span>
               </div>
+            ))}
+          </div>
+
+          <div className="app-bottom-nav" aria-hidden="true">
+            {[Home, Route, Headphones, UserRound].map((Icon, index) => (
+              <span key={index} className={index === 1 ? "active" : ""}>
+                <Icon className="h-4 w-4" />
+              </span>
             ))}
           </div>
         </div>
@@ -257,21 +323,75 @@ function Hero() {
 
 function ProblemSection() {
   return (
-    <section className="border-y border-white/[0.08] bg-surface/35 py-16 lg:py-24">
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[0.75fr_1fr] lg:px-8">
+    <section className="method-section border-y border-white/[0.08] py-16 lg:py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.72fr_1fr] lg:px-8">
         <div>
-          <p className="section-kicker">O problema</p>
-          <h2 className="section-title">Cansou de desistir no módulo básico?</h2>
+          <p className="section-kicker">Método NextLevel</p>
+          <h2 className="section-title">O inglês entra na rotina porque cada avanço recompensa.</h2>
         </div>
-        <div className="max-w-3xl text-lg leading-8 text-muted">
-          <p>
-            A culpa não é sua, é do método. Regras soltas, repetição robótica e progresso
-            invisível drenam qualquer motivação. A NextLevel usa o que o cérebro já ama:
-            desafio certo, recompensa imediata e evolução clara.
+        <div>
+          <p className="max-w-3xl text-lg leading-8 text-muted">
+            Em vez de empilhar conteúdo, a NextLevel combina missões rápidas, IA adaptativa
+            e progressão visível. O usuário sabe o que fazer agora, por que aquilo importa
+            e qual recompensa vem depois.
           </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              ["Desafio certo", "A dificuldade muda conforme acertos, hesitação e retenção."],
+              ["Recompensa imediata", "XP, streak e drops aparecem a cada missão concluída."],
+              ["Evolução visível", "Ranks e rotas mostram o próximo passo sem fricção."],
+            ].map(([title, copy]) => (
+              <div key={title} className="method-card">
+                <CheckCircle2 className="h-5 w-5 text-success" />
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ModeJourneyPreview({ mode }: { mode: (typeof modes)[number] }) {
+  return (
+    <div className="mode-preview">
+      <div className="flex items-center justify-between gap-4">
+        <span className="rounded-full bg-white/[0.07] px-3 py-2 text-xs font-bold uppercase text-secondary">
+          {mode.preview.badge}
+        </span>
+        <span className="font-mono text-xs font-bold text-warning sm:text-sm">{mode.preview.reward}</span>
+      </div>
+      <div className="mt-7 rounded-3xl border border-white/[0.08] bg-background/55 p-5">
+        <div className={`mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${mode.accent}`}>
+          <Map className="h-6 w-6 text-white" />
+        </div>
+        <h3 className="font-display text-2xl font-extrabold text-white">{mode.preview.headline}</h3>
+        <p className="mt-3 text-sm leading-6 text-muted">{mode.preview.description}</p>
+      </div>
+      <div className="journey-map">
+        {mode.preview.missions.map(([mission, detail, progress, status]) => (
+          <div key={mission as string} className="journey-card">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="font-display font-bold text-white">{mission as string}</p>
+                <span className="text-xs font-semibold text-muted">{detail as string}</span>
+              </div>
+              <span className="rounded-full bg-secondary/10 px-3 py-1 text-[10px] font-bold uppercase text-secondary">
+                {status as string}
+              </span>
+            </div>
+            <div className="mt-4 h-2 rounded-full bg-raised">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-secondary to-primary"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -317,28 +437,7 @@ function ModesSection() {
                       </div>
                     </CardContent>
                   </Card>
-                  <div className="mode-preview">
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-white/[0.07] px-3 py-2 text-xs font-bold uppercase text-secondary">
-                        Jornada ativa
-                      </span>
-                      <span className="font-mono text-sm font-bold text-warning">Loot raro</span>
-                    </div>
-                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                      {["Vocabulary Quest", "Grammar Dungeon", "Listening Lab", "Reading Raids"].map((mission, index) => (
-                        <div key={mission} className="rounded-3xl border border-white/[0.08] bg-background/60 p-5">
-                          <p className="font-display font-bold text-white">{mission}</p>
-                          <div className="mt-4 h-2 rounded-full bg-raised">
-                            <div
-                              className="h-full rounded-full bg-gradient-to-r from-secondary to-primary"
-                              style={{ width: `${[78, 54, 91, 66][index]}%` }}
-                            />
-                          </div>
-                          <p className="mt-3 font-mono text-xs font-bold text-muted">+{[120, 80, 160, 100][index]} XP</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ModeJourneyPreview mode={mode} />
                 </div>
               </TabsContent>
             );

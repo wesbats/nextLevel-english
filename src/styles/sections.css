@@ -1,0 +1,29 @@
+.method-section {
+  background:
+    linear-gradient(135deg, rgba(0, 102, 255, 0.12), transparent 38%),
+    rgba(19, 23, 32, 0.35);
+}
+
+.method-card {
+  min-height: 11rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(10, 14, 26, 0.42);
+  padding: 20px;
+}
+
+.method-card h3 {
+  margin: 18px 0 8px;
+  color: #ffffff;
+  font-family: Sora, system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.method-card p {
+  margin: 0;
+  color: #9aa5b8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.65;
+}

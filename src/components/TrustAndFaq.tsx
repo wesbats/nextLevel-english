@@ -104,7 +104,7 @@ export default function TrustAndFaq() {
           </div>
           <Card>
             <CardContent className="p-5 sm:p-8">
-              <Accordion type="single" collapsible defaultValue="item-0">
+              <Accordion type="single" collapsible>
                 {faqs.map((faq, index) => (
                   <AccordionItem key={faq.question} value={`item-${index}`}>
                     <AccordionTrigger>{faq.question}</AccordionTrigger>

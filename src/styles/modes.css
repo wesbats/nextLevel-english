@@ -1,0 +1,38 @@
+.mode-preview {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background:
+    linear-gradient(140deg, rgba(0, 102, 255, 0.2), transparent 34%),
+    rgba(19, 23, 32, 0.68);
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.mode-preview::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  inset: auto -3rem -9rem auto;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgba(0, 212, 255, 0.17);
+  border-radius: 40px;
+  transform: rotate(-8deg);
+  animation: pulse-line 4s ease-in-out infinite;
+}
+
+.journey-map {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.journey-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background: rgba(10, 14, 26, 0.56);
+  padding: 18px;
+}

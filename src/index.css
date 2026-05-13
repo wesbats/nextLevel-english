@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./styles/base.css";
+@import "./styles/hero.css";
+@import "./styles/layout.css";
+@import "./styles/modes.css";
+@import "./styles/sections.css";
+
+@theme {
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-display: Sora, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-background: #0a0e1a;
+  --color-surface: #131720;
+  --color-raised: #1f2633;
+  --color-primary: #0066ff;
+  --color-secondary: #00d4ff;
+  --color-tertiary: #7c4dff;
+  --color-success: #00e676;
+  --color-warning: #ffb800;
+  --color-error: #ff3b3b;
+  --color-muted: #9aa5b8;
+
+  --animate-accordion-down: accordion-down 0.22s ease-out;
+  --animate-accordion-up: accordion-up 0.22s ease-out;
+}
